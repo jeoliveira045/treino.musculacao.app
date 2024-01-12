@@ -7,7 +7,7 @@ import {Observable} from "rxjs";
 })
 export class ExercicioService {
 
-  URL_API = "http://localhost:4200/cliente"
+  URL_API = "http://localhost:8080/exercicio"
 
   constructor(protected httpClient: HttpClient) { }
 
@@ -19,19 +19,16 @@ export class ExercicioService {
     return this.httpClient.get(`${this.URL_API}/${id}`)
   }
 
-  public insert(resource){
+  public insert(resource: any){
     return this.httpClient.post(this.URL_API, resource)
   }
 
-  public update(resource, id: number){
+  public update(resource: any, id: number){
     return this.httpClient.put(`${this.URL_API}/${id}`, resource)
   }
 
-  public delete(id){
+  public delete(id: number){
     return this.httpClient.delete(`${this.URL_API}/${id}`)
   }
 
-  public findByMusculo(musculo: string){
-    return this.httpClient.get(`${this.URL_API}/tipo/${musculo}`)
-  }
 }

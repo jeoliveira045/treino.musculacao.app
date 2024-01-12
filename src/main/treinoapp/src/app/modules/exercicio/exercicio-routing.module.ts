@@ -5,8 +5,6 @@ import {ListComponent} from "./list/list.component";
 import {FormComponent} from "./form/form.component";
 
 const routes: Routes = [{
-
-
   path: '',
   children: [
     {
