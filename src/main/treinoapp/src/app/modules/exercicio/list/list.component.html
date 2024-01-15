@@ -1,15 +1,18 @@
-<p-button style="margin-top: 0.5rem;" routerLink="/exercicio/form" label="Adicionar Exercicio"></p-button>
+<p-button routerLink="/exercicio/form/new" label="Adicionar Exercicio"></p-button>
+<p-button routerLink="/cliente/list" label="Lista de Clientes"></p-button>
 <p-table [value]="exerciciosList" [tableStyle]="{'min-width': '50rem'}">
   <ng-template pTemplate="header">
     <tr>
       <th>Descrição</th>
       <th>Musculo</th>
+      <th> </th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-exercicio>
     <tr>
       <td>{{exercicio.descricao}}</td>
       <td>{{exercicio.musculo}}</td>
+      <td><p-button routerLink="/exercicio/form/detail/{{exercicio.id}}" label="Editar"></p-button></td>
     </tr>
   </ng-template>
 </p-table>

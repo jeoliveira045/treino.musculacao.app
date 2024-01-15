@@ -1,5 +1,6 @@
 package treino.treinoapplication.rest;
 
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -36,7 +37,7 @@ public class ExercicioRest {
 
     @PutMapping("/{id}")
     public ResponseEntity<Exercicio> update(@PathVariable Long id,@RequestBody Exercicio resource){
-        Exercicio exercicio = repository.findById(id).orElseThrow();
+        Exercicio exercicio = repository.findById(id).orElseThrow(() -> new EntityNotFoundException("Id não encontrado"));
         exercicio.setId(id);
         exercicio.setDescricao(resource.getDescricao());
         exercicio.setMusculo(resource.getMusculo());

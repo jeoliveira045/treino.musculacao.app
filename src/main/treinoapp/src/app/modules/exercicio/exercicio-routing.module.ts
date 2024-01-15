@@ -13,7 +13,17 @@ const routes: Routes = [{
     },
     {
       path: 'form',
-      component: FormComponent
+      component: FormComponent,
+      children:[
+        {
+          path:"detail/:id",
+          component: FormComponent
+        },
+        {
+          path:"new",
+          component:FormComponent
+        }
+      ]
     }
   ]
 }
