@@ -9,6 +9,8 @@ import {FormBuilder, FormControl} from "@angular/forms";
 })
 export class FormComponent {
 
+  musculoSelectBoxListItem = ["Biceps","Triceps","Costas", "Peito", "Deltóide", "Trapézio", "Pernas","Cardio"]
+
   formBuilder: FormBuilder = new FormBuilder()
 
   formStructure = this.formBuilder.group({

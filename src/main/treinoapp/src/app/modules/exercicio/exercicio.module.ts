@@ -11,6 +11,8 @@ import {ButtonModule} from "primeng/button";
 import {TreeModule} from "primeng/tree";
 import {InputTextModule} from "primeng/inputtext";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {DropdownModule} from "primeng/dropdown";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 
 @NgModule({
@@ -20,14 +22,15 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     FormComponent
   ],
   providers:[ExercicioService],
-  imports: [
-    CommonModule,
-    ExercicioRoutingModule,
-    TableModule,
-    ButtonModule,
-    InputTextModule,
-    FormsModule,
-    ReactiveFormsModule
-  ]
+    imports: [
+      CommonModule,
+      ExercicioRoutingModule,
+      TableModule,
+      ButtonModule,
+      InputTextModule,
+      FormsModule,
+      ReactiveFormsModule,
+      DropdownModule
+    ]
 })
 export class ExercicioModule { }
