@@ -31,4 +31,8 @@ export class ExercicioService {
     return this.httpClient.delete(`${this.URL_API}/${id}`)
   }
 
+  public findByMusculo(musculo: string){
+    return this.httpClient.get(`${this.URL_API}/tipo/${musculo}`)
+  }
+
 }

@@ -18,5 +18,5 @@ public class Cliente {
     private String nome;
 
     @ManyToMany
-    private List<Exercicio> treinos;
+    private List<Treino> treinos;
 }

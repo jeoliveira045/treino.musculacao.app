@@ -10,6 +10,9 @@ import {ButtonModule} from "primeng/button";
 import {ReactiveFormsModule} from "@angular/forms";
 import {InputTextModule} from "primeng/inputtext";
 import {MessagesModule} from "primeng/messages";
+import {MultiSelectModule} from "primeng/multiselect";
+import {ClienteService} from "../../services/cliente.service";
+import {ExercicioService} from "../../services/exercicio.service";
 
 
 @NgModule({
@@ -25,7 +28,11 @@ import {MessagesModule} from "primeng/messages";
     ButtonModule,
     ReactiveFormsModule,
     InputTextModule,
-    MessagesModule
+    MessagesModule,
+    MultiSelectModule
+  ], providers:[
+    ClienteService,
+    ExercicioService
   ]
 })
 export class ClienteModule { }

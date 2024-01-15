@@ -3,6 +3,12 @@
   <div><label for="nome">Nome: </label>
   <input pInputText id="nome" name="nome" formControlName="nome" >
   </div>
+  <h2>Tipos de Treino</h2>
+  <div>
+    <h3>Treinos:</h3>
+    <p-multiSelect [style]="{width:'20rem'}" formControlName="treinos" [options]="treinoGroup" optionLabel="descricao">
+    </p-multiSelect>
+  </div>
   <p-button  type="submit">Salvar</p-button>
   <p-button  routerLink="/cliente/list">Voltar a lista</p-button>
   <p-messages [(value)]="messages" [enableService]="false" [closable]="true"></p-messages>

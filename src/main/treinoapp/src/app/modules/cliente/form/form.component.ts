@@ -3,6 +3,7 @@ import {FormBuilder, FormControl} from "@angular/forms";
 import {ClienteService} from "../../../services/cliente.service";
 import {ActivatedRoute} from "@angular/router";
 import {Message} from "primeng/api";
+import {ExercicioService} from "../../../services/exercicio.service";
 
 @Component({
   selector: 'app-form',
@@ -11,9 +12,11 @@ import {Message} from "primeng/api";
 })
 export class FormComponent implements OnInit{
 
-  constructor(protected clienteService: ClienteService, protected activatedRoute: ActivatedRoute){
+  constructor(protected clienteService: ClienteService, protected activatedRoute: ActivatedRoute, protected exercicioService: ExercicioService){
 
   }
+
+  treinoGroup: Array<any> = new Array<any>();
 
   messages: Message[] = []
 
@@ -23,6 +26,7 @@ export class FormComponent implements OnInit{
 
   formStructure = this.formBuilder.group({
     nome: new FormControl(''),
+    treinos: new FormControl([])
   })
 
   ngOnInit() {
@@ -31,18 +35,25 @@ export class FormComponent implements OnInit{
       this.clienteService.findById(id).subscribe((cliente: any) => {
           this.clienteId = id
           this.formStructure.controls['nome'].setValue(cliente.nome)
+          this.formStructure.controls['treinos'].setValue(cliente.treinos)
         }
       )
     }
+    this.exercicioService.findAll().subscribe((res: any) =>{
+      for(let item of res){
+        this.treinoGroup.push(item)
+      }
+    })
 
   }
 
   ngSubmit(e: any){
+
     this.clienteId ?
       this.clienteService.update(e.value, this.clienteId).subscribe(
-        (res) => {
+        () => {
           this.messages = [{severity: 'success', summary: "Success", detail: "O cliente foi atualizado!"}]
-        }, (err: any) => {
+        }, () => {
           this.messages = [{severity: 'error', summary: "Error", detail: "Um erro foi identificado"}]
         }
       )
@@ -50,11 +61,11 @@ export class FormComponent implements OnInit{
       this.clienteService.insert(e.value).subscribe(
         () => {
           this.messages = [{severity: 'success', summary: "Success", detail: "O cliente foi criado!"}]
-        }, (err:any) => {
+        }, () => {
           this.messages = [{severity: 'error', summary: "Error", detail: "Um erro foi identificado"}]
         }
-
       )
+    console.log(e)
   }
 
 }
