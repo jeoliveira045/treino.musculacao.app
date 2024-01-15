@@ -5,20 +5,28 @@ import {ListComponent} from "./list/list.component";
 import {FormComponent} from "./form/form.component";
 
 const routes: Routes = [{
-
   path: '',
   children: [
     {
-      path:'list',
+      path: 'list',
       component: ListComponent
     },
     {
       path: 'form',
-      component: FormComponent
+      component: FormComponent,
+      children:[
+        {
+          path:"detail/:id",
+          component: FormComponent
+        },
+        {
+          path:"new",
+          component:FormComponent
+        }
+      ]
     }
   ]
-
-}];
+}]
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

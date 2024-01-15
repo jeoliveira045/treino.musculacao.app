@@ -1,1 +1,15 @@
-<p>list works!</p>
+<p-button routerLink="/cliente/form/new">Adicionar Cliente</p-button>
+<p-table [value]="clientList" [tableStyle]="{'min-width': '50rem'}">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Nome</th>
+      <th> </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-cliente>
+    <tr>
+      <td>{{cliente.nome}}</td>
+      <td><p-button routerLink="/cliente/form/detail/{{cliente.id}}" label="Editar"></p-button></td>
+    </tr>
+  </ng-template>
+</p-table>
