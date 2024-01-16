@@ -12,6 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/treino")
 @AllArgsConstructor
+@CrossOrigin("http://localhost:4200")
 public class TreinoRest {
     private TreinoRepository repository;
 

@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import {HttpClientModule} from "@angular/common/http";
 import {TreeModule} from "primeng/tree";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {AppDialog} from "./components/dialog.component";
+import {TableModule} from "primeng/table";
 
 @NgModule({
   declarations: [
@@ -16,7 +18,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
-    TreeModule
+    TreeModule,
+    TableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
