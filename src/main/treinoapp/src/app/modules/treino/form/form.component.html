@@ -1,1 +1,15 @@
-<p>form works!</p>
+<h1>Adicionar Treino</h1>
+<form [formGroup]="treinoFormGroup" (ngSubmit)="ngSubmit(treinoFormGroup)">
+  <div>
+    <label for="tipo">Tipo: </label>
+    <input pInputText id="tipo" name="tipo" formControlName="tipo">
+  </div>
+  <p></p>
+  <div>
+    <label for="exercicios">Exercicios: </label>
+    <p-multiSelect [style]="{width: '15rem'}" id="exercicios" [options]="exerciciosList" optionLabel="descricao" formControlName="exercicios"></p-multiSelect>
+  </div>
+  <p-button type="submit" label="Salvar"></p-button>
+  <p-button routerLink="/treino/list" label="Voltar a Lista"></p-button>
+  <p-messages [closable]="false"></p-messages>
+</form>

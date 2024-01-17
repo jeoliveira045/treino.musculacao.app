@@ -44,17 +44,26 @@ export class ListComponent implements OnInit, OnDestroy{
     )
   }
 
-  showDialog(){
-    this.ref = this.dialogService.open(AppDialog, {
-      header:'Lista de exercicios',
-      data: {
-        objCollection: this.treinosList[0],
-        fields: this.fields
-      },
-      width: '70%',
-      contentStyle: {overflow: 'auto'},
-      baseZIndex: 10000
+  showDialog(e: any){
+    this.treinosList.map((value: any) => {
+      if(value['id'] == e){
+        this.ref = this.dialogService.open(AppDialog, {
+          header:'Lista de exercicios',
+          data: {
+            objCollection: value['exercicios'],
+            fields: this.fields
+          },
+          width: '70%',
+          contentStyle: {overflow: 'auto'},
+          baseZIndex: 10000
+        })
+      }
     })
+  }
+
+  deleteTreino(id:number){
+    this.treinoService.delete(id).subscribe(res => res)
+    window.location.reload()
   }
 
 }

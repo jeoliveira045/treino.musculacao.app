@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {TreeNode} from "primeng/api";
+import {PrimeNGConfig, TreeNode} from "primeng/api";
 
 @Component({
   selector: 'app-root',
@@ -7,14 +7,13 @@ import {TreeNode} from "primeng/api";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit{
-  title = 'treinoapp';
 
-  constructor() {
+  constructor(private primengConfig: PrimeNGConfig) {
 
   }
 
   ngOnInit(): void {
-
+    this.primengConfig.ripple=true
   }
 
 

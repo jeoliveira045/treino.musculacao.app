@@ -11,6 +11,12 @@ import {TreeTableModule} from "primeng/treetable";
 import {AppDialog} from "../../components/dialog.component";
 import {DialogService, DynamicDialogRef} from "primeng/dynamicdialog";
 import {ButtonModule} from "primeng/button";
+import {ReactiveFormsModule} from "@angular/forms";
+import {InputTextModule} from "primeng/inputtext";
+import {DropdownModule} from "primeng/dropdown";
+import {MultiSelectModule} from "primeng/multiselect";
+import {MessagesModule} from "primeng/messages";
+import {MessageService} from "primeng/api";
 
 
 @NgModule({
@@ -20,17 +26,23 @@ import {ButtonModule} from "primeng/button";
     FormComponent,
     AppDialog
   ],
-  imports: [
-    CommonModule,
-    TreinoRoutingModule,
-    TableModule,
-    HttpClientModule,
-    TreeTableModule,
-    ButtonModule
-  ],
+    imports: [
+        CommonModule,
+        TreinoRoutingModule,
+        TableModule,
+        HttpClientModule,
+        TreeTableModule,
+        ButtonModule,
+        ReactiveFormsModule,
+        InputTextModule,
+        DropdownModule,
+        MultiSelectModule,
+        MessagesModule
+    ],
   providers:[
     DialogService,
-    DynamicDialogRef
+    DynamicDialogRef,
+    MessageService
   ]
 })
 export class TreinoModule { }

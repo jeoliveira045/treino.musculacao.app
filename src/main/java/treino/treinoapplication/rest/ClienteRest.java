@@ -35,7 +35,6 @@ public class ClienteRest {
     public ResponseEntity<Cliente> update(@PathVariable Long id,@RequestBody Cliente resource){
         Cliente cliente = repository.findById(id).orElseThrow();
         cliente.setId(id);
-        cliente.setTreinos(resource.getTreinos());
         cliente.setNome(resource.getNome());
         return ResponseEntity.ok(repository.save(cliente));
     }

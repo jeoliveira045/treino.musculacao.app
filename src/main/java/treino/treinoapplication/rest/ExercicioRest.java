@@ -8,7 +8,9 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import treino.treinoapplication.entities.Exercicio;
+import treino.treinoapplication.entities.listview.ExercicioListView;
 import treino.treinoapplication.repositories.ExercicioRepository;
+import treino.treinoapplication.repositories.listview.ExercicioListViewRepository;
 import treino.treinoapplication.repositories.specification.ExercicioSpecification;
 
 import java.util.List;
@@ -18,11 +20,14 @@ import java.util.List;
 @CrossOrigin("http://localhost:4200")
 @AllArgsConstructor
 public class ExercicioRest {
-    public ExercicioRepository repository;
+
+    private ExercicioListViewRepository listViewRepository;
+
+    private ExercicioRepository repository;
 
     @GetMapping
-    public ResponseEntity<List<Exercicio>> findAll(){
-        return ResponseEntity.ok(repository.findAll());
+    public ResponseEntity<List<ExercicioListView>> findAll(){
+        return ResponseEntity.ok(listViewRepository.findAll());
     }
 
     @PostMapping

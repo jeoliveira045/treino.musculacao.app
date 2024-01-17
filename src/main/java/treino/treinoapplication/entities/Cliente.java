@@ -16,7 +16,4 @@ public class Cliente {
     private Long id;
 
     private String nome;
-
-    @ManyToMany
-    private List<Treino> treinos;
 }

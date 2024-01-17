@@ -29,7 +29,7 @@ export class AppDialog implements OnInit{
   fields = new Array<any>()
 
   ngOnInit(){
-    this.objCollection = this.dynamicDialogConfig.data.objCollection['exercicios']
+    this.objCollection = this.dynamicDialogConfig.data.objCollection
     this.fields = this.dynamicDialogConfig.data.fields
   }
 
