@@ -4,6 +4,7 @@ import {FormBuilder, FormControl} from "@angular/forms";
 import {ActivatedRoute} from "@angular/router";
 import {ExercicioService} from "../../../services/exercicio.service";
 import {MessageService} from "primeng/api";
+import {ClienteService} from "../../../services/cliente.service";
 
 @Component({
   selector: 'app-form',
@@ -14,12 +15,14 @@ export class FormComponent implements OnInit{
 
   exerciciosList = new Array<any>();
 
+  clienteList = new Array<any>();
+
   treinoId: number
 
   constructor(protected treinoService: TreinoService,
               protected activatedRoute: ActivatedRoute,
               protected exercicioService: ExercicioService,
-
+              protected alunoService: ClienteService,
               protected messageService: MessageService
   ){
 
@@ -33,16 +36,19 @@ export class FormComponent implements OnInit{
       this.treinoService.findById(this.treinoId).subscribe((res: any) => {
         this.treinoFormGroup.controls['tipo'].setValue(res.tipo)
         this.treinoFormGroup.controls['exercicios'].setValue(res.exercicios)
+        this.treinoFormGroup.controls['cliente'].setValue(res.cliente)
       })
     }
 
     this.exercicioService.findAll().subscribe((res: Array<any>) => res.forEach(value => this.exerciciosList.push(value)))
+    this.alunoService.findAll().subscribe((res: Array<any>) => res.forEach(value => this.clienteList.push(value)))
   }
   formBuilder: FormBuilder = new FormBuilder()
 
   treinoFormGroup = this.formBuilder.group({
     tipo: new FormControl(''),
-    exercicios: new FormControl([])
+    exercicios: new FormControl([]),
+    cliente: new FormControl(null)
   })
 
   ngSubmit(e: any){

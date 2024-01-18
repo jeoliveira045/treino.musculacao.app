@@ -25,6 +25,13 @@ export class ListComponent implements OnInit{
     })
   }
 
+  deleteCliente(e: number){
+    this.clienteService.delete(e).subscribe(res => res)
+    window.location.reload()
+  }
+
+
+
 
 
 }

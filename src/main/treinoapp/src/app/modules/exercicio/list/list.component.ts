@@ -24,4 +24,9 @@ export class ListComponent implements OnInit {
     })
   }
 
+  deleteExercicio(e:number){
+    this.exercicioService.delete(e).subscribe(res => res)
+    window.location.reload()
+  }
+
 }

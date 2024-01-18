@@ -8,10 +8,12 @@ import org.hibernate.annotations.View;
 @Entity
 @Data
 @View(query = """
-        SELECT id,
-               descricao,
-               musculo
-        from EXERCICIO
+        SELECT 
+            id,
+            descricao,
+            musculo
+        from 
+            EXERCICIO
         """)
 public class ExercicioListView {
     @Id

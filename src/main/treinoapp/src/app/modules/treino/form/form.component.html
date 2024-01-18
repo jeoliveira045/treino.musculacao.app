@@ -9,6 +9,10 @@
     <label for="exercicios">Exercicios: </label>
     <p-multiSelect [style]="{width: '15rem'}" id="exercicios" [options]="exerciciosList" optionLabel="descricao" formControlName="exercicios"></p-multiSelect>
   </div>
+  <div>
+    <label for="cliente">Aluno: </label>
+    <p-dropdown id="cliente" [options]="clienteList" optionLabel="nome" formControlName="cliente"></p-dropdown>
+  </div>
   <p-button type="submit" label="Salvar"></p-button>
   <p-button routerLink="/treino/list" label="Voltar a Lista"></p-button>
   <p-messages [closable]="false"></p-messages>

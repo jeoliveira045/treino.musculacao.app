@@ -19,7 +19,7 @@ public class Treino {
     @ManyToOne
     private Cliente cliente;
 
-    @OneToMany
+    @ManyToMany
     private List<Exercicio> exercicios;
 
 

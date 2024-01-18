@@ -5,7 +5,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import treino.treinoapplication.entities.Cliente;
 import treino.treinoapplication.entities.Exercicio;
+import treino.treinoapplication.entities.listview.ClienteListView;
 import treino.treinoapplication.repositories.ClienteRepository;
+import treino.treinoapplication.repositories.listview.ClienteListViewRepository;
 
 import java.util.List;
 
@@ -16,9 +18,11 @@ import java.util.List;
 public class ClienteRest {
     private ClienteRepository repository;
 
+    private ClienteListViewRepository listViewRepository;
+
     @GetMapping
-    public ResponseEntity<List<Cliente>> findAll(){
-        return ResponseEntity.ok(repository.findAll());
+    public ResponseEntity<List<ClienteListView>> findAll(){
+        return ResponseEntity.ok(listViewRepository.findAll());
     }
 
     @PostMapping

@@ -5,7 +5,9 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import treino.treinoapplication.entities.Treino;
+import treino.treinoapplication.entities.listview.TreinoListView;
 import treino.treinoapplication.repositories.TreinoRepository;
+import treino.treinoapplication.repositories.listview.TreinoListViewRepository;
 
 import java.util.List;
 
@@ -16,9 +18,11 @@ import java.util.List;
 public class TreinoRest {
     private TreinoRepository repository;
 
+    private TreinoListViewRepository listViewRepository;
+
     @GetMapping
-    public ResponseEntity<List<Treino>> findAll(){
-        return ResponseEntity.ok(repository.findAll());
+    public ResponseEntity<List<TreinoListView>> findAll(){
+        return ResponseEntity.ok(listViewRepository.findAll());
     }
 
     @PostMapping

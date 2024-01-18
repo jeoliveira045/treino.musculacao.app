@@ -5,13 +5,18 @@
   <ng-template pTemplate="header" >
     <tr>
       <th>Tipo</th>
+      <th>Descrição</th>
+      <th>Pertence a</th>
       <th> </th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-rowNode>
     <tr>
       <td>{{rowNode.tipo}}</td>
-      <td><p-button (click)="showDialog(rowNode.id)" label="Exercicios"></p-button><p-button routerLink="/treino/form/detail/{{rowNode.id}}" label="Editar"></p-button><p-button icon="pi pi-times" styleClass="p-button-danger" (click)="deleteTreino(rowNode.id)" label="Deletar"></p-button> </td>
+      <td>{{rowNode.exercicios}}
+      <td>{{rowNode.nome}}</td>
+      <td><p-button routerLink="/treino/form/detail/{{rowNode.id}}" label="Editar"></p-button><p-button icon="pi pi-times" styleClass="p-button-danger" (click)="deleteTreino(rowNode.id)" label="Deletar"></p-button> </td>
+
     </tr>
   </ng-template>
 </p-table>
