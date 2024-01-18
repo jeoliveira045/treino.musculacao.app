@@ -16,7 +16,10 @@
       <td>{{rowNode.exercicios}}
       <td>{{rowNode.nome}}</td>
       <td><p-button routerLink="/treino/form/detail/{{rowNode.id}}" label="Editar"></p-button><p-button icon="pi pi-times" styleClass="p-button-danger" (click)="deleteTreino(rowNode.id)" label="Deletar"></p-button> </td>
-
     </tr>
   </ng-template>
 </p-table>
+<p-messages></p-messages>
+<p-dialog header="Erro!" [(visible)]="isVisible" [modal]="true" [draggable]="false" [resizable]="false">
+  <p #message></p>
+</p-dialog>

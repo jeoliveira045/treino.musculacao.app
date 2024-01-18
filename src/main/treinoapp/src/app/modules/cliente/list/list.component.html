@@ -9,9 +9,13 @@
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-cliente>
-    <tr>
+    <tr #element>
       <td>{{cliente.nome}}</td>
       <td><p-button routerLink="/cliente/form/detail/{{cliente.id}}" icon="pi pi-pencil" label="Editar"></p-button><p-button icon="pi pi-times" styleClass="p-button-danger" label="Deletar" (click)="deleteCliente(cliente.id)"></p-button></td>
     </tr>
   </ng-template>
 </p-table>
+<p-messages></p-messages>
+<p-dialog header="Erro!" [(visible)]="isVisible" [modal]="true" [draggable]="false" [resizable]="false">
+  <p #message></p>
+</p-dialog>

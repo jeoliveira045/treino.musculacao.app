@@ -14,6 +14,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {DropdownModule} from "primeng/dropdown";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MessagesModule} from "primeng/messages";
+import {MessageService} from "primeng/api";
+import {DialogModule} from "primeng/dialog";
 
 
 @NgModule({
@@ -22,7 +24,7 @@ import {MessagesModule} from "primeng/messages";
     ListComponent,
     FormComponent
   ],
-  providers:[ExercicioService],
+  providers:[ExercicioService,MessageService],
   imports: [
     CommonModule,
     ExercicioRoutingModule,
@@ -32,7 +34,8 @@ import {MessagesModule} from "primeng/messages";
     FormsModule,
     ReactiveFormsModule,
     DropdownModule,
-    MessagesModule
+    MessagesModule,
+    DialogModule
   ]
 })
 export class ExercicioModule { }

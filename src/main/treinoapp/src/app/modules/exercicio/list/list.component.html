@@ -13,7 +13,11 @@
     <tr>
       <td>{{exercicio.descricao}}</td>
       <td>{{exercicio.musculo}}</td>
-      <td><p-button routerLink="/exercicio/form/detail/{{exercicio.id}}" label="Editar"></p-button><p-button styleClass="p-button-danger" label="Deletar" (click)="deleteExercicio(exercicio.id)" icon="pi pi-times"></p-button></td>
+      <td><p-button routerLink="/exercicio/form/detail/{{exercicio.id}}" label="Editar"></p-button><p-button styleClass="p-button-danger" label="Deletar" (click)="deleteCliente(exercicio.id)" icon="pi pi-times"></p-button></td>
     </tr>
   </ng-template>
 </p-table>
+<p-messages></p-messages>
+<p-dialog [(visible)]="isVisible" header="Erro!" [modal]="true" [resizable]="false" [draggable]="false">
+  <p #message></p>
+</p-dialog>

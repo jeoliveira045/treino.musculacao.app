@@ -1,3 +1,6 @@
+server:
+  error:
+    include-stacktrace: always
 spring:
   datasource:
     url: jdbc:oracle:thin:@//localhost:1521/xe # URL de conexao do Oracle

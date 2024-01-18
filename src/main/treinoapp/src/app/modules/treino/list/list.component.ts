@@ -1,6 +1,6 @@
 import {Component, DoCheck, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {TreinoService} from "../../../services/treino.service";
-import {TreeNode} from "primeng/api";
+import {MessageService, TreeNode} from "primeng/api";
 import {DialogService, DynamicDialogRef} from "primeng/dynamicdialog";
 import {AppDialog} from "../../../components/dialog.component";
 
@@ -12,16 +12,17 @@ import {AppDialog} from "../../../components/dialog.component";
 })
 export class ListComponent implements OnInit, OnDestroy{
 
-
   treinosList: Array<TreeNode> = new Array<TreeNode>()
 
   ref!: DynamicDialogRef
 
   fields = ['Descrição', 'Músculo']
 
+  isVisible: boolean = false;
 
-  constructor(protected dialogService: DialogService,  protected treinoService: TreinoService) {
+  @ViewChild('message') message: ElementRef;
 
+  constructor(protected dialogService: DialogService,  protected treinoService: TreinoService, protected messageService: MessageService) {
   }
 
 
@@ -44,26 +45,17 @@ export class ListComponent implements OnInit, OnDestroy{
     )
   }
 
-  showDialog(e: any){
-    this.treinosList.map((value: any) => {
-      if(value['id'] == e){
-        this.ref = this.dialogService.open(AppDialog, {
-          header:'Lista de exercicios',
-          data: {
-            objCollection: value['exercicios'],
-            fields: this.fields
-          },
-          width: '70%',
-          contentStyle: {overflow: 'auto'},
-          baseZIndex: 10000
-        })
+  deleteTreino(e: number){
+    this.treinoService.delete(e).subscribe({
+      next: ()=>{
+        this.treinosList = this.treinosList.filter((data: any) => data.id !== e)
+        this.messageService.add({severity: 'success', summary: 'Informação: ', detail:'O item foi deletado'});
+      },
+      error: (err: any) => {
+        this.isVisible = true
+        this.message.nativeElement.textContent = err.error.trace
       }
     })
-  }
-
-  deleteTreino(id:number){
-    this.treinoService.delete(id).subscribe(res => res)
-    window.location.reload()
   }
 
 }

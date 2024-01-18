@@ -48,7 +48,6 @@ export class FormComponent implements OnInit{
   }
 
   ngSubmit(e: any){
-
     this.clienteId ?
       this.clienteService.update(e.value, this.clienteId).subscribe(
         () => {
@@ -65,7 +64,6 @@ export class FormComponent implements OnInit{
           this.messages = [{severity: 'error', summary: "Error", detail: "Um erro foi identificado"}]
         }
       )
-    console.log(e)
   }
 
 }

@@ -17,6 +17,7 @@ import {DropdownModule} from "primeng/dropdown";
 import {MultiSelectModule} from "primeng/multiselect";
 import {MessagesModule} from "primeng/messages";
 import {MessageService} from "primeng/api";
+import {DialogModule} from "primeng/dialog";
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import {MessageService} from "primeng/api";
         InputTextModule,
         DropdownModule,
         MultiSelectModule,
-        MessagesModule
+        MessagesModule,
+        DialogModule
     ],
   providers:[
     DialogService,

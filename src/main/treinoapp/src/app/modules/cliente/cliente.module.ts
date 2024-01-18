@@ -13,6 +13,8 @@ import {MessagesModule} from "primeng/messages";
 import {MultiSelectModule} from "primeng/multiselect";
 import {ClienteService} from "../../services/cliente.service";
 import {ExercicioService} from "../../services/exercicio.service";
+import {MessageService} from "primeng/api";
+import {DialogModule} from "primeng/dialog";
 
 
 @NgModule({
@@ -29,10 +31,12 @@ import {ExercicioService} from "../../services/exercicio.service";
     ReactiveFormsModule,
     InputTextModule,
     MessagesModule,
-    MultiSelectModule
+    MultiSelectModule,
+    DialogModule
   ], providers:[
     ClienteService,
-    ExercicioService
+    ExercicioService,
+    MessageService
   ]
 })
 export class ClienteModule { }
