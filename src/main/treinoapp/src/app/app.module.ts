@@ -8,10 +8,12 @@ import {TreeModule} from "primeng/tree";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {AppDialog} from "./components/dialog.component";
 import {TableModule} from "primeng/table";
+import {AppMenuItemComponent} from "./core/components/app-menuitem.component";
 
 @NgModule({
   declarations: [
     AppComponent,
+    AppMenuItemComponent
   ],
   imports: [
     BrowserModule,
