@@ -1,9 +1,0 @@
-<h1>Adicionar Cliente</h1>
-<form [formGroup]="formStructure" (ngSubmit)="ngSubmit(formStructure)">
-  <div><label for="nome">Nome: </label>
-  <input pInputText id="nome" name="nome" formControlName="nome" >
-  </div>
-  <p-button  type="submit">Salvar</p-button>
-  <p-button  routerLink="/cliente/list">Voltar a lista</p-button>
-  <p-messages [(value)]="messages" [enableService]="false" [closable]="true"></p-messages>
-</form>
