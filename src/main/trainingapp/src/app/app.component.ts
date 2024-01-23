@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {HttpClientModule} from "@angular/common/http";
 import {PrimeNGConfig} from "primeng/api";
+import {AppLayoutComponent} from "./core/components/app-layout/app-layout.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+    imports: [RouterOutlet, AppLayoutComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

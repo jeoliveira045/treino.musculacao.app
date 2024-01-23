@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {ClienteService} from "../../../services/cliente.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, RouterLink} from "@angular/router";
 import {ExercicioService} from "../../../services/exercicio.service";
 import {Message} from "primeng/api";
 import {FormBuilder, FormControl, ReactiveFormsModule} from "@angular/forms";
@@ -17,6 +17,7 @@ import {InputTextModule} from "primeng/inputtext";
         MessagesModule,
         ReactiveFormsModule,
         InputTextModule,
+        RouterLink
     ],
   templateUrl: './cliente-form.component.html',
   styleUrl: './cliente-form.component.scss'

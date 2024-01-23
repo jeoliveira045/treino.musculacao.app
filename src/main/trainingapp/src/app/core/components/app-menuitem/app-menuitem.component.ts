@@ -2,8 +2,8 @@ import {Component, HostBinding, Input, OnDestroy, OnInit, ChangeDetectorRef, CUS
 import {Subscription, filter} from "rxjs";
 import {Router, NavigationEnd, RouterLink, RouterLinkActive} from "@angular/router"
 import {animate, state, style, transition, trigger} from "@angular/animations";
-import {LayoutService} from "../../services/layout.service";
-import {MenuService} from "../../services/menu.service";
+import {LayoutService} from "../../../services/layout.service";
+import {MenuService} from "../../../services/menu.service";
 import {RippleModule} from "primeng/ripple";
 import {NgClass, NgForOf, CommonModule} from "@angular/common";
 

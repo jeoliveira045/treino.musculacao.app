@@ -1,10 +1,15 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { MenuItem } from 'primeng/api';
-import { LayoutService } from "./service/app.layout.service";
+import { LayoutService } from "../../../services/layout.service";
+import {RouterLink} from "@angular/router";
 
 @Component({
-    selector: 'app-topbar',
-    templateUrl: './app.topbar.component.html'
+  selector: 'app-topbar',
+  templateUrl: './app.topbar.component.html',
+  imports: [
+    RouterLink
+  ],
+  standalone: true
 })
 export class AppTopBarComponent {
 
