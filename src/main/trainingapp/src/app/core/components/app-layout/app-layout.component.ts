@@ -5,6 +5,7 @@ import {AppSidebarComponent} from "../app-sidebar/app-sidebar.component";
 import {LayoutService} from "../../../services/layout.service";
 import {DOCUMENT, NgClass} from "@angular/common";
 import {AppTopBarComponent} from "../app-topbar/app.topbar.component";
+import {CardModule} from "primeng/card";
 
 @Component({
   selector: 'app-layout',
@@ -13,7 +14,8 @@ import {AppTopBarComponent} from "../app-topbar/app.topbar.component";
     AppSidebarComponent,
     RouterOutlet,
     NgClass,
-    AppTopBarComponent
+    AppTopBarComponent,
+    CardModule
   ],
   standalone: true
 })

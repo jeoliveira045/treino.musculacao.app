@@ -73,8 +73,10 @@ export const routes: Routes = [
           component:TreinoFormComponent
         }
       ]
-    }
+    },
   ]
 
+  },{
+    path:'', redirectTo:"cliente/list", pathMatch:'full'
   }
 ];

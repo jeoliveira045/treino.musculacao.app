@@ -1,7 +1,10 @@
 <h1>Adicionar Cliente</h1>
 <form [formGroup]="formStructure" (ngSubmit)="ngSubmit(formStructure)">
-  <div><label for="nome">Nome: </label>
-    <input pInputText id="nome" name="nome" formControlName="nome" >
+  <div class="form-container">
+    <label for="nome">Nome</label>
+    <p><input pInputText id="nome" (blur)="log($event.target)" name="nome" formControlName="nome" ></p>
+    <label for="cpf">CPF</label>
+    <p><p-inputMask mask="999.999.999-99" id="cpf" (onBlur)="CPFValidator($event.target)" name="cpf" formControlName="cpf"></p-inputMask></p>
   </div>
   <p-button  type="submit">Salvar</p-button>
   <p-button  routerLink="/cliente/list">Voltar a lista</p-button>
