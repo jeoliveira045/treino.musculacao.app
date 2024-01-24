@@ -1,5 +1,6 @@
-import { Injectable, effect, signal } from '@angular/core';
+import {Injectable, effect, signal, Inject} from '@angular/core';
 import { Subject } from 'rxjs';
+import {DOCUMENT} from "@angular/common";
 
 
 export interface AppConfig {
@@ -54,7 +55,8 @@ export class LayoutService {
 
   overlayOpen$ = this.overlayOpen.asObservable();
 
-  constructor() {
+  constructor(@Inject(DOCUMENT) protected document: Document) {
+
     effect(() => {
       const config = this.config();
       if (this.updateStyle(config)) {
@@ -157,6 +159,6 @@ export class LayoutService {
   }
 
   changeScale(value: number) {
-    document.documentElement.style.fontSize = `${value}px`;
+    this.document.documentElement.style.fontSize = `${value}px`;
   }
 }

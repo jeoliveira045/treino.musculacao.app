@@ -1,9 +1,9 @@
-import {Component, OnDestroy, ViewChild, Renderer2} from "@angular/core";
+import {Component, OnDestroy, ViewChild, Renderer2, Inject} from "@angular/core";
 import {Router, NavigationEnd, RouterOutlet} from '@angular/router'
 import {Subscription,filter} from "rxjs";
 import {AppSidebarComponent} from "../app-sidebar/app-sidebar.component";
 import {LayoutService} from "../../../services/layout.service";
-import {NgClass} from "@angular/common";
+import {DOCUMENT, NgClass} from "@angular/common";
 import {AppTopBarComponent} from "../app-topbar/app.topbar.component";
 
 @Component({
@@ -29,7 +29,7 @@ export class AppLayoutComponent implements OnDestroy {
 
   @ViewChild(AppTopBarComponent) appTopbar!: AppTopBarComponent;
 
-  constructor(public layoutService: LayoutService, public renderer: Renderer2, public router: Router) {
+  constructor(public layoutService: LayoutService, public renderer: Renderer2, public router: Router, @Inject(DOCUMENT) protected document: Document) {
     this.overlayMenuOpenSubscription = this.layoutService.overlayOpen$.subscribe(() => {
       if (!this.menuOutsideClickListener) {
         this.menuOutsideClickListener = this.renderer.listen('document', 'click', event => {
@@ -93,11 +93,11 @@ export class AppLayoutComponent implements OnDestroy {
   }
 
   unblockBodyScroll(): void {
-    if (document.body.classList) {
-      document.body.classList.remove('blocked-scroll');
+    if (this.document.body.classList) {
+      this.document.body.classList.remove('blocked-scroll');
     }
     else {
-      document.body.className = document.body.className.replace(new RegExp('(^|\\b)' +
+      this.document.body.className = document.body.className.replace(new RegExp('(^|\\b)' +
         'blocked-scroll'.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
     }
   }
