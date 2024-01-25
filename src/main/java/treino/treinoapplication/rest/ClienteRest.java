@@ -40,6 +40,7 @@ public class ClienteRest {
         Cliente cliente = repository.findById(id).orElseThrow();
         cliente.setId(id);
         cliente.setNome(resource.getNome());
+        cliente.setCpf(resource.getCpf());
         return ResponseEntity.ok(repository.save(cliente));
     }
 
