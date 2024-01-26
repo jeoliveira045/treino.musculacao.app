@@ -3,10 +3,11 @@ import {DropdownModule} from "primeng/dropdown";
 import {ButtonModule} from "primeng/button";
 import {MessagesModule} from "primeng/messages";
 import {Message} from "primeng/api";
-import {FormBuilder, FormControl, FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {ExercicioService} from "../../../services/exercicio.service";
 import {ActivatedRoute, RouterLink} from "@angular/router";
 import {InputTextModule} from "primeng/inputtext";
+import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-exercicio-form',
@@ -19,6 +20,7 @@ import {InputTextModule} from "primeng/inputtext";
     FormsModule,
     RouterLink,
     InputTextModule,
+    NgIf,
   ],
   templateUrl: './exercicio-form.component.html',
   styleUrl: './exercicio-form.component.scss'
@@ -33,9 +35,18 @@ export class ExercicioFormComponent {
   formBuilder: FormBuilder = new FormBuilder()
 
   formStructure = this.formBuilder.group({
-    descricao: new FormControl(''),
-    musculo: new FormControl('')
+    descricao: new FormControl('', [
+      Validators.required,
+      Validators.minLength(7)
+    ]),
+    musculo: new FormControl('', [
+      Validators.required
+    ])
   })
+
+  get formCtrls(){
+    return this.formStructure.controls
+  }
 
   constructor(protected exercicioService: ExercicioService, protected activatedRoute: ActivatedRoute) {
   }
@@ -51,23 +62,15 @@ export class ExercicioFormComponent {
     }
   }
 
-  ngSubmit(e: any){
-    this.exercicioId ?
-      this.exercicioService.update(e.value, this.exercicioId).subscribe(
-        (res) => {
-          this.messages = [{severity: 'success', summary: "Success", detail: "O exercicio foi atualizado!"}]
-        }, (err: any) => {
-          this.messages = [{severity: 'error', summary: "Error", detail: "Um erro foi identificado"}]
-        }
-      )
-      :
-      this.exercicioService.insert(e.value).subscribe(
-        () => {
-          this.messages = [{severity: 'success', summary: "Success", detail: "O exercicio foi criado!"}]
-        }, (err:any) => {
-          this.messages = [{severity: 'error', summary: "Error", detail: "Um erro foi identificado"}]
-        }
+  insertOrUpdateMessage =  {
+    next: (res: any) => {
+      console.log(res)
+      this.messages = [{severity: 'success', summary: "Success", detail: "O exercicio foi atualizado!"}]
+    }, error: (err: any) => {
+      this.messages = [{severity: 'error', summary: "Error", detail: "Um erro foi identificado"}]
+    }}
 
-      )
+  ngSubmit(e: any){
+      this.exercicioService.update(e.value, <number>this.exercicioId).subscribe(this.insertOrUpdateMessage);
   }
 }

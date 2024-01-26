@@ -13,7 +13,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/cliente")
-@CrossOrigin("http://localhost:4200")
 @AllArgsConstructor
 public class ClienteRest {
     private ClienteRepository repository;

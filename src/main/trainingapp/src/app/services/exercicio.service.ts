@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {environment} from "../../environments/environment.development";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ExercicioService {
 
-  URL_API = "http://localhost:8080/exercicio"
+  URL_API = `${environment.apiUrl}/exercicio`
 
   constructor(protected httpClient: HttpClient) { }
 
@@ -24,7 +25,7 @@ export class ExercicioService {
   }
 
   public update(resource: any, id: number){
-    return this.httpClient.put(`${this.URL_API}/${id}`, resource)
+    return id ?  this.httpClient.put(`${this.URL_API}/${id}`, resource) : this.insert(resource)
   }
 
   public delete(id: number){

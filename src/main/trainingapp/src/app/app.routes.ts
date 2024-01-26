@@ -75,8 +75,8 @@ export const routes: Routes = [
       ]
     },
   ]
-
-  },{
-    path:'', redirectTo:"cliente/list", pathMatch:'full'
+  },
+  {
+    path:'', component: AppComponent
   }
 ];

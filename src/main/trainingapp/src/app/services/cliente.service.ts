@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {environment} from "../../environments/environment.development";
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class ClienteService {
 
   constructor(protected httpClient: HttpClient) { }
 
-  URL_API = "http://localhost:8080/cliente"
+  URL_API = `${environment.apiUrl}/cliente`
 
 
   public findAll(): Observable<any> {
@@ -25,7 +26,7 @@ export class ClienteService {
   }
 
   public update(resource: any, id: number){
-    return this.httpClient.put(`${this.URL_API}/${id}`, resource)
+    return id ? this.httpClient.put(`${this.URL_API}/${id}`, resource) : this.insert(resource)
   }
 
   public delete(id: number){

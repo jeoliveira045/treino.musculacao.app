@@ -8,8 +8,9 @@ import {ActivatedRoute, RouterLink} from "@angular/router";
 import {ExercicioService} from "../../../services/exercicio.service";
 import {ClienteService} from "../../../services/cliente.service";
 import {MessageService} from "primeng/api";
-import {FormBuilder, FormControl, ReactiveFormsModule} from "@angular/forms";
+import {FormBuilder, FormControl, ReactiveFormsModule, Validators} from "@angular/forms";
 import {InputTextModule} from "primeng/inputtext";
+import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-treino-form',
@@ -21,7 +22,8 @@ import {InputTextModule} from "primeng/inputtext";
     MessagesModule,
     ReactiveFormsModule,
     InputTextModule,
-    RouterLink
+    RouterLink,
+    NgIf
   ],
   providers:[MessageService],
   templateUrl: './treino-form.component.html',
@@ -61,20 +63,25 @@ export class TreinoFormComponent {
   formBuilder: FormBuilder = new FormBuilder()
 
   treinoFormGroup = this.formBuilder.group({
-    tipo: new FormControl(''),
-    exercicios: new FormControl([]),
-    cliente: new FormControl(null)
+    tipo: new FormControl('', [Validators.required]),
+    exercicios: new FormControl([], [Validators.required]),
+    cliente: new FormControl(null, [Validators.required])
   })
 
-  ngSubmit(e: any){
-    if(this.treinoId){
-      this.treinoService.update(e.value, this.treinoId).subscribe(res => res)
-      this.messageService.add({severity: 'success',summary:'Informação: ', detail: 'os dados do formulário foram atualizados', life: 5000})
-    }else{
-      this.treinoService.insert(e.value).subscribe(res => res)
-      this.messageService.add({severity: 'success',summary:'Informação: ', detail: 'os dados do formulário foram salvos', life: 5000})
-    }
+  get formCtrls(){
+    return this.treinoFormGroup.controls
+  }
 
+  insertOrUpdateMessage = {
+    next: (res: any) => {
+      this.messageService.add({severity: 'success', summary: "Success", detail: "O exercicio foi atualizado!"})
+    }, error: (err: any) => {
+      this.messageService.add({severity: 'error', summary: "Error", detail: "Um erro foi identificado"})
+    }}
+
+
+  ngSubmit(e: any){
+    this.treinoService.update(e.value, <number>this.treinoId).subscribe(this.insertOrUpdateMessage)
 
   }
 }

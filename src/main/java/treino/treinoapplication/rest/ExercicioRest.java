@@ -17,7 +17,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/exercicio")
-@CrossOrigin("http://localhost:4200")
 @AllArgsConstructor
 public class ExercicioRest {
 

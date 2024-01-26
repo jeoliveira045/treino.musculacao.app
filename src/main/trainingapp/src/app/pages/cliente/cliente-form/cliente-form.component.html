@@ -1,10 +1,19 @@
 <h1>Adicionar Cliente</h1>
 <form [formGroup]="formStructure" (ngSubmit)="ngSubmit(formStructure)">
   <div class="form-container">
-    <label for="nome">Nome</label>
-    <p><input pInputText id="nome" name="nome" formControlName="nome" ></p>
-    <label for="cpf">CPF</label>
-    <p><p-inputMask mask="999.999.999-99" id="cpf" cpfPatternValidation name="cpf" formControlName="cpf"></p-inputMask></p>
+    <label for="nome">Nome</label><br>
+    <input pInputText id="nome" name="nome" formControlName="nome"><br>
+    <div *ngIf="formCtrls['nome'].invalid && (formCtrls['nome'].dirty || formCtrls['nome'].touched)">
+      <small *ngIf="formCtrls['nome'].errors?.['required']" style="color: red">O nome é obrigatório</small><br>
+      <small *ngIf="formCtrls['nome'].errors?.['minlength']" style="color: red" >O nome não pode ter menos que 4 letras</small><br>
+    </div>
+
+    <label for="cpf">CPF</label><br>
+    <p-inputMask mask="999.999.999-99" id="cpf" cpfPatternValidation name="cpf" formControlName="cpf"></p-inputMask><br>
+    <div *ngIf="formCtrls['cpf'].invalid && (formCtrls['cpf'].dirty || formCtrls['cpf'].touched)">
+      <small *ngIf="formCtrls['cpf'].errors?.['required']" style="color: red">O cpf é obrigatório</small><br>
+      <small *ngIf="formCtrls['cpf'].errors?.['minlength']" style="color: red" >O cpf não pode ter menos que 11 caracteres</small>
+    </div>
   </div>
   <p-button  type="submit">Salvar</p-button>
   <p-button  routerLink="/cliente/list">Voltar a lista</p-button>

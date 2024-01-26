@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import {HttpClientModule} from "@angular/common/http";
 import {PrimeNGConfig} from "primeng/api";
 import {AppLayoutComponent} from "./core/components/app-layout/app-layout.component";
+import {environment} from "../environments/environment.development";
 
 @Component({
   selector: 'app-root',
