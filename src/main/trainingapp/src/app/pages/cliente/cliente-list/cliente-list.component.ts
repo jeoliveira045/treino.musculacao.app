@@ -52,7 +52,7 @@ export class ClienteListComponent {
       },
       error: (err: any) => {
         this.isVisible = true
-        this.message.nativeElement.textContent = err.error.trace
+        console.log(err)
       }
     })
   }

@@ -1,6 +1,7 @@
 package treino.treinoapplication.rest;
 
 import lombok.AllArgsConstructor;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import treino.treinoapplication.entities.Cliente;

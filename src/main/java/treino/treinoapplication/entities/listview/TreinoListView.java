@@ -20,8 +20,10 @@ import treino.treinoapplication.entities.Cliente;
         on te.exercicios_id = e.id
         inner join treino t
         on te.treino_id = t.id
+        inner join cliente_treinos ct
+        on ct.treinos_id = t.id
         inner join cliente c
-        on t.cliente_id = c.id
+        on c.id = ct.cliente_id
         group by t.id, c.nome, t.tipo
         """)
 public class TreinoListView {

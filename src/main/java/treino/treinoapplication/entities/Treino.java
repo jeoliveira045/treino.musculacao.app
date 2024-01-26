@@ -16,9 +16,6 @@ public class Treino {
 
     private String tipo;
 
-    @ManyToOne
-    private Cliente cliente;
-
     @ManyToMany
     private List<Exercicio> exercicios;
 

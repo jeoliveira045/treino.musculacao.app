@@ -60,7 +60,6 @@ export class ClienteFormComponent {
       Validators.required,
       Validators.minLength(11),
       CPFValidatorClass.CPFValidator
-
     ])
   })
 

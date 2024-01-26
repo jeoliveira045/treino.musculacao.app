@@ -18,4 +18,7 @@ public class Cliente {
     private String nome;
 
     private String cpf;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Treino> treinos;
 }

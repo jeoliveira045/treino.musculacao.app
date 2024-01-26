@@ -11,8 +11,14 @@ import org.hibernate.annotations.View;
         select
             c.id,
             c.nome,
-            c.cpf
-        from CLIENTE c
+            c.cpf,
+            listagg(t.tipo, ',') as treinos
+        from TREINO t
+        inner join CLIENTE_TREINOS ct
+        on ct.treinos_id = t.id
+        inner join CLIENTE c
+        on ct.cliente_id = c.id
+        group by c.id, c.nome, c.cpf
         """)
 public class ClienteListView {
     @Id
