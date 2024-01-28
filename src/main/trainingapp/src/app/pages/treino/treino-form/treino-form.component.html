@@ -17,7 +17,7 @@
   </div>
   <div>
     <label for="cliente">Aluno: </label>
-    <p-dropdown id="cliente" [options]="clienteList" optionLabel="nome" formControlName="cliente"></p-dropdown>
+    <p-dropdown id="cliente" [options]="clienteList" [style]="{width: '5rem'}" optionLabel="nome" formControlName="cliente"></p-dropdown>
     <div *ngIf="formCtrls['cliente'].invalid && (formCtrls['cliente'].dirty || formCtrls['cliente'].touched)">
       <small *ngIf="formCtrls['cliente'].errors?.['required']" style="color: red">Escolha um cliente para o treino</small><br>
     </div>

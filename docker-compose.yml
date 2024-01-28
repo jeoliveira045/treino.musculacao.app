@@ -1,0 +1,10 @@
+services:
+  oracle-training:
+    image: oracle-db:1.0.1
+    ports:
+      - 1521:1521
+    environment:
+      - ORACLE_PWD=oracle
+    volumes:
+      - ./src/main/resources/docker/oracle/:/docker-entrypoint-initdb.d/startup
+
