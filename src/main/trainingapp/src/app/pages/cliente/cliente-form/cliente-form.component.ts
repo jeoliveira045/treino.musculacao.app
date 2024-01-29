@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ClienteService} from "../../../services/cliente.service";
 import {ActivatedRoute, RouterLink} from "@angular/router";
 import {ExercicioService} from "../../../services/exercicio.service";
@@ -7,7 +7,7 @@ import {
   FormBuilder,
   FormControl,
   ReactiveFormsModule,
-  Validators
+  Validators, ɵElement
 } from "@angular/forms";
 import {ButtonModule} from "primeng/button";
 import {MessagesModule} from "primeng/messages";
@@ -17,6 +17,7 @@ import {InputNumberModule} from "primeng/inputnumber";
 import {InputMaskModule} from "primeng/inputmask";
 import {CPFValidatorDirective} from "../../../directives/cpfvalidator.directive";
 import {CPFValidatorClass} from "../../../custom/validations/cpfvalidation.class";
+import {Cliente} from "../../../domain/Cliente";
 
 
 @Component({
@@ -40,7 +41,7 @@ import {CPFValidatorClass} from "../../../custom/validations/cpfvalidation.class
   templateUrl: './cliente-form.component.html',
   styleUrl: './cliente-form.component.scss'
 })
-export class ClienteFormComponent {
+export class ClienteFormComponent implements OnInit{
   constructor(protected clienteService: ClienteService, protected activatedRoute: ActivatedRoute, protected exercicioService: ExercicioService){
 
   }
@@ -50,6 +51,8 @@ export class ClienteFormComponent {
   clienteId?: number;
 
   formBuilder: FormBuilder = new FormBuilder()
+
+  form = this.formBuilder.record({['cliente']: Cliente})
 
   formStructure = this.formBuilder.group({
     nome: new FormControl('', [
@@ -70,13 +73,14 @@ export class ClienteFormComponent {
   ngOnInit() {
     let id = this.activatedRoute.firstChild?.snapshot.params['id']
     if(id) {
-      this.clienteService.findById(id).subscribe((cliente: any) => {
+      this.clienteService.findById(id).subscribe((cliente: Cliente) => {
           this.clienteId = id
-          this.formStructure.controls['nome'].setValue(cliente.nome)
-          this.formStructure.controls['cpf'].setValue(cliente.cpf)
+          this.formStructure.controls['nome'].setValue(<string|null>cliente.nome)
+          this.formStructure.controls['cpf'].setValue(<string|null>cliente.cpf)
         }
       )
     }
+
   }
 
   insertOrUpdateMessage = {

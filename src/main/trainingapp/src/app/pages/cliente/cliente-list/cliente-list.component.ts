@@ -1,4 +1,4 @@
-import {Component, ElementRef, ViewChild, ViewChildren} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild, ViewChildren} from '@angular/core';
 import {ButtonModule} from "primeng/button";
 import {TableModule} from "primeng/table";
 import {MessagesModule} from "primeng/messages";
@@ -6,6 +6,7 @@ import {DialogModule} from "primeng/dialog";
 import {ClienteService} from "../../../services/cliente.service";
 import {MessageService} from "primeng/api";
 import {RouterLink} from "@angular/router";
+import {Cliente} from "../../../domain/Cliente";
 
 @Component({
   selector: 'app-cliente-list',
@@ -21,8 +22,8 @@ import {RouterLink} from "@angular/router";
   templateUrl: './cliente-list.component.html',
   styleUrl: './cliente-list.component.scss'
 })
-export class ClienteListComponent {
-  clientList: Array<any> = new Array<any>();
+export class ClienteListComponent implements OnInit{
+  clientList: Array<Cliente> = new Array<Cliente>();
 
   isVisible: boolean = false;
 
@@ -37,10 +38,8 @@ export class ClienteListComponent {
   }
 
   getAllClientes(){
-    this.clienteService.findAll().subscribe(res => {
-      for(let item of res){
-        this.clientList.push(item);
-      }
+    this.clienteService.findAll().subscribe((clientes: Array<Cliente>) => {
+      clientes.forEach(item => this.clientList.push(item))
     })
   }
 

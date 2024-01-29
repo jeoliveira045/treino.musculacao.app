@@ -77,6 +77,6 @@ export const routes: Routes = [
   ]
   },
   {
-    path:'', component: AppComponent
+    path:'', redirectTo: "cliente/list", pathMatch: "full"
   }
 ];
