@@ -50,10 +50,10 @@ export class TreinoFormComponent {
   ngOnInit() {
     this.treinoId = this.activatedRoute.firstChild?.snapshot.params['id']
     if (this.treinoId) {
-      this.treinoService.findById(this.treinoId).subscribe((res: any) => {
-        this.treinoFormGroup.controls['tipo'].setValue(res.tipo)
-        this.treinoFormGroup.controls['exercicios'].setValue(res.exercicios)
-        this.treinoFormGroup.controls['cliente'].setValue(res.cliente)
+      this.treinoService.findById(this.treinoId).subscribe((treino: any) => {
+        this.treinoId = treino.id
+        this.treinoFormGroup.controls['tipo'].setValue(treino.tipo)
+        this.treinoFormGroup.controls['exercicios'].setValue(treino.exercicios)
       })
     }
 

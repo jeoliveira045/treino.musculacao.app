@@ -74,7 +74,7 @@ export class ClienteFormComponent implements OnInit{
     let id = this.activatedRoute.firstChild?.snapshot.params['id']
     if(id) {
       this.clienteService.findById(id).subscribe((cliente: Cliente) => {
-          this.clienteId = id
+          this.clienteId = cliente.id
           this.formStructure.controls['nome'].setValue(<string|null>cliente.nome)
           this.formStructure.controls['cpf'].setValue(<string|null>cliente.cpf)
         }
