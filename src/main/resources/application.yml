@@ -3,9 +3,9 @@ server:
     include-stacktrace: always
 spring:
   datasource:
-    url: jdbc:oracle:thin:@//localhost:1521/ORCLPDB1 # URL de conexao do Oracle
-    username: TREINO # Nome de usuario do banco de dados Oracle
-    password: TREINO # Senha do banco de dados Oracle
+    url: jdbc:oracle:thin:@//localhost:1521/xe # URL de conexao do Oracle
+    username: treino # Nome de usuario do banco de dados Oracle
+    password: treino # Senha do banco de dados Oracle
     driver-class-name: oracle.jdbc.driver.OracleDriver # Driver JDBC do Oracle
   jpa:
     hibernate:

@@ -70,8 +70,8 @@ export class ExercicioFormComponent {
   ngOnInit(){
     let id = this.activatedRoute.firstChild?.snapshot.params['id']
     if(id){
-      this.exercicioId = id
       this.exercicioService.findById(id).subscribe((exercicio: any) => {
+        this.exercicioId = exercicio.id
         this.formStructure.controls['descricao'].setValue(exercicio.descricao)
         this.formStructure.controls['musculo'].setValue(exercicio.musculo)
       })
