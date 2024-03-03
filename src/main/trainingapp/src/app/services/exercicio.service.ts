@@ -8,7 +8,7 @@ import {environment} from "../../environments/environment.development";
 })
 export class ExercicioService {
 
-  URL_API = `${environment.apiUrl}/exercicio`
+  URL_API = `${environment.apiUrl}/api/exercicio`
 
   constructor(protected httpClient: HttpClient) { }
 

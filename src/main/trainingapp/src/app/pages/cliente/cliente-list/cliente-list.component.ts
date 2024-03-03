@@ -1,4 +1,4 @@
-import {Component, ElementRef, ViewChild, ViewChildren} from '@angular/core';
+import {Component, ElementRef, inject, OnInit, ViewChild, ViewChildren} from '@angular/core';
 import {ButtonModule} from "primeng/button";
 import {TableModule} from "primeng/table";
 import {MessagesModule} from "primeng/messages";
@@ -17,30 +17,29 @@ import {RouterLink} from "@angular/router";
     DialogModule,
     RouterLink,
   ],
-  providers:[MessageService],
+  providers:[MessageService, ClienteService],
   templateUrl: './cliente-list.component.html',
   styleUrl: './cliente-list.component.scss'
 })
-export class ClienteListComponent {
+export class ClienteListComponent implements OnInit{
   clientList: Array<any> = new Array<any>();
 
   isVisible: boolean = false;
 
   @ViewChild('message') message!: ElementRef;
-  @ViewChildren('element') destroyOn!: ElementRef;
+  // @ViewChildren('element') destroyOn!: ElementRef;
 
   constructor(protected clienteService: ClienteService, protected messageService: MessageService) {
+
   }
 
   ngOnInit(){
-    this.getAllClientes();
+    this.getAllClientes()
   }
 
   getAllClientes(){
     this.clienteService.findAll().subscribe(res => {
-      for(let item of res){
-        this.clientList.push(item);
-      }
+      this.clientList = res
     })
   }
 

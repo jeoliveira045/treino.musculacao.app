@@ -1,28 +1,28 @@
-  <h1>Adicionar Treino</h1>
-<form [formGroup]="treinoFormGroup" (ngSubmit)="ngSubmit(treinoFormGroup)">
-  <div>
-    <label for="tipo">Tipo: </label>
-    <input pInputText id="tipo" name="tipo" formControlName="tipo">
-    <div *ngIf="formCtrls['tipo'].invalid && (formCtrls['tipo'].dirty || formCtrls['tipo'].touched)">
-      <small *ngIf="formCtrls['tipo'].errors?.['required']" style="color: red">O tipo é obrigatório</small><br>
-    </div>
-  </div>
-  <p></p>
-  <div>
-    <label for="exercicios">Exercicios: </label>
-    <p-multiSelect [style]="{width: '15rem'}" id="exercicios" [options]="exerciciosList" optionLabel="descricao" formControlName="exercicios"></p-multiSelect>
-    <div *ngIf="formCtrls['exercicios'].invalid && (formCtrls['exercicios'].dirty || formCtrls['exercicios'].touched)">
-      <small *ngIf="formCtrls['exercicios'].errors?.['required']" style="color: red">Os exercicios são obrigatórios</small><br>
-    </div>
-  </div>
-  <div>
-    <label for="cliente">Aluno: </label>
-    <p-dropdown id="cliente" [options]="clienteList" [style]="{width: '5rem'}" optionLabel="nome" formControlName="cliente"></p-dropdown>
-    <div *ngIf="formCtrls['cliente'].invalid && (formCtrls['cliente'].dirty || formCtrls['cliente'].touched)">
-      <small *ngIf="formCtrls['cliente'].errors?.['required']" style="color: red">Escolha um cliente para o treino</small><br>
-    </div>
-  </div>
-  <p-button type="submit" label="Salvar"></p-button>
-  <p-button routerLink="/treino/list" label="Voltar a Lista"></p-button>
-  <p-messages [closable]="false"></p-messages>
-</form>
+<!--  <h1>Adicionar Treino</h1>-->
+<!--<form [formGroup]="treinoFormGroup" (ngSubmit)="ngSubmit(treinoFormGroup)">-->
+<!--  <div>-->
+<!--    <label for="tipo">Tipo: </label>-->
+<!--    <input pInputText id="tipo" name="tipo" formControlName="tipo">-->
+<!--    <div *ngIf="formCtrls['tipo'].invalid && (formCtrls['tipo'].dirty || formCtrls['tipo'].touched)">-->
+<!--      <small *ngIf="formCtrls['tipo'].errors?.['required']" style="color: red">O tipo é obrigatório</small><br>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <p></p>-->
+<!--  <div>-->
+<!--    <label for="exercicios">Exercicios: </label>-->
+<!--    <p-multiSelect [style]="{width: '15rem'}" id="exercicios" [options]="exerciciosList" optionLabel="descricao" formControlName="exercicios"></p-multiSelect>-->
+<!--    <div *ngIf="formCtrls['exercicios'].invalid && (formCtrls['exercicios'].dirty || formCtrls['exercicios'].touched)">-->
+<!--      <small *ngIf="formCtrls['exercicios'].errors?.['required']" style="color: red">Os exercicios são obrigatórios</small><br>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div>-->
+<!--    <label for="cliente">Aluno: </label>-->
+<!--    <p-dropdown id="cliente" [options]="clienteList" [style]="{width: '5rem'}" optionLabel="nome" formControlName="cliente"></p-dropdown>-->
+<!--    <div *ngIf="formCtrls['cliente'].invalid && (formCtrls['cliente'].dirty || formCtrls['cliente'].touched)">-->
+<!--      <small *ngIf="formCtrls['cliente'].errors?.['required']" style="color: red">Escolha um cliente para o treino</small><br>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <p-button type="submit" label="Salvar"></p-button>-->
+<!--  <p-button routerLink="/treino/list" label="Voltar a Lista"></p-button>-->
+<!--  <p-messages [closable]="false"></p-messages>-->
+<!--</form>-->

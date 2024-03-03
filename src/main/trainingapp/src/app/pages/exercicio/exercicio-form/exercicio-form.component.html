@@ -1,20 +1,23 @@
 <h1>Adicionar Exercício</h1>
 <form [formGroup]="formStructure" (ngSubmit)="ngSubmit(formStructure)">
-  <div style="margin-bottom: 10px">
-    <label for="descricao">Descrição: </label><br>
-    <input id="descricao" name="descricao" pInputText formControlName="descricao"></div>
-    <div *ngIf="formCtrls['descricao'].invalid && (formCtrls['descricao'].dirty || formCtrls['descricao'].touched)">
-      <small *ngIf="formCtrls['descricao'].errors?.['required']" style="color: red">A descrição é obrigatória</small><br>
-      <small *ngIf="formCtrls['descricao'].errors?.['minlength']" style="color: red" >A descrição não pode ter menos que 7 letras</small><br>
-    </div>
-  <div style="margin-bottom: 10px">
-    <label for="musculo">Musculo: </label><br>
-    <p-dropdown [options]="musculoSelectBoxListItem"  id="musculo" formControlName="musculo">
-    </p-dropdown>
-    <div *ngIf="formCtrls['musculo'].invalid && (formCtrls['musculo'].dirty || formCtrls['musculo'].touched)">
-      <small *ngIf="formCtrls['musculo'].errors?.['required']" style="color: red">O musculo é obrigatório</small><br>
-    </div>
+  <div style="margin-bottom: 1rem;">
+    <p-inputGroup>
+      <input pInputText class="formInput" id="descricao" name="descricao" placeholder="Descrição" formControlName="descricao">
+
+      <p-dropdown [style]="{width: '100%'}" class="musculoDropDown" [options]="musculoSelectBoxListItem" formControlName="musculo" id="musculo" name="musculo" placeholder="Musculo"></p-dropdown>
+    </p-inputGroup>
   </div>
+  <p-inputGroup>
+    <input pInputText placeholder="Repetição A" class="formInput" id="repeticaoA" name="repeticaoA" formControlName="repeticaoA" >
+
+    <input pInputText placeholder="Repetição B" class="formInput" id="repeticaoB" name="repeticaoB" formControlName="repeticaoB" >
+  </p-inputGroup>
+
+  <p-inputGroup>
+    <input pInputText placeholder="Repetição C" class="formInput" id="repeticaoC" name="repeticaoC" formControlName="repeticaoC" >
+
+    <p-dropdown [style]="{width: '100%'}" styleClass="tipoDeTreinoDropDown" placeholder="Tipo de Treino" class="formInput" [options]="tiposDeTreinoDropDown" id="tipoDeTreino" name="tipoDeTreino" formControlName="tipoDeTreino" ></p-dropdown>
+  </p-inputGroup>
   <p-button type="submit" label="Salvar"></p-button>
   <p-button routerLink="/exercicio/list" label="Voltar a Lista"></p-button>
   <p-messages [(value)]="messages" [enableService]="false" [closable]="true"></p-messages>

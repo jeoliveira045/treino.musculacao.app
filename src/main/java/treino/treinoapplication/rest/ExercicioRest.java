@@ -16,7 +16,7 @@ import treino.treinoapplication.repositories.specification.ExercicioSpecificatio
 import java.util.List;
 
 @RestController
-@RequestMapping("/exercicio")
+@RequestMapping("/api/exercicio")
 @AllArgsConstructor
 public class ExercicioRest {
 

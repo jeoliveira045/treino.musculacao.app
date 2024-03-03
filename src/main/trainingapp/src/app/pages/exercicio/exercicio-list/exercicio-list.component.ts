@@ -1,4 +1,4 @@
-import {Component, ElementRef, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {ButtonModule} from "primeng/button";
 import {TableModule} from "primeng/table";
 import {MessagesModule} from "primeng/messages";
@@ -24,7 +24,7 @@ import {RouterLink} from "@angular/router";
   templateUrl: './exercicio-list.component.html',
   styleUrl: './exercicio-list.component.scss'
 })
-export class ExercicioListComponent {
+export class ExercicioListComponent implements OnInit{
   exerciciosList: Array<any> = new Array<any>();
 
   isVisible: boolean = false;
@@ -44,7 +44,7 @@ export class ExercicioListComponent {
     })
   }
 
-  deleteCliente(e: number){
+  deleteExercicio(e: number){
     this.exercicioService.delete(e).subscribe({
       next: ()=>{
         this.exerciciosList = this.exerciciosList.filter((data) => data.id !== e)

@@ -10,7 +10,7 @@ export class ClienteService {
 
   constructor(protected httpClient: HttpClient) { }
 
-  URL_API = `${environment.apiUrl}/cliente`
+  URL_API = `${environment.apiUrl}/api/cliente`
 
 
   public findAll(): Observable<any> {

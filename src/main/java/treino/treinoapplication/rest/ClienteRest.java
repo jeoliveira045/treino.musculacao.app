@@ -13,7 +13,7 @@ import treino.treinoapplication.repositories.listview.ClienteListViewRepository;
 import java.util.List;
 
 @RestController
-@RequestMapping("/cliente")
+@RequestMapping("/api/cliente")
 @AllArgsConstructor
 public class ClienteRest {
     private ClienteRepository repository;
@@ -37,11 +37,7 @@ public class ClienteRest {
 
     @PutMapping("/{id}")
     public ResponseEntity<Cliente> update(@PathVariable Long id,@RequestBody Cliente resource){
-        Cliente cliente = repository.findById(id).orElseThrow();
-        cliente.setId(id);
-        cliente.setNome(resource.getNome());
-        cliente.setCpf(resource.getCpf());
-        return ResponseEntity.ok(repository.save(cliente));
+        return ResponseEntity.ok(repository.save(resource));
     }
 
     @DeleteMapping("/{id}")

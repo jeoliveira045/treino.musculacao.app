@@ -1,4 +1,4 @@
-import {Component, OnDestroy, ViewChild, Renderer2, Inject} from "@angular/core";
+import {Component, OnDestroy, ViewChild, Renderer2, Inject, OnInit} from "@angular/core";
 import {Router, NavigationEnd, RouterOutlet} from '@angular/router'
 import {Subscription,filter} from "rxjs";
 import {AppSidebarComponent} from "../app-sidebar/app-sidebar.component";
@@ -6,6 +6,7 @@ import {LayoutService} from "../../../services/layout.service";
 import {DOCUMENT, NgClass} from "@angular/common";
 import {AppTopBarComponent} from "../app-topbar/app.topbar.component";
 import {CardModule} from "primeng/card";
+import {KeycloakService} from "keycloak-angular";
 
 @Component({
   selector: 'app-layout',
@@ -19,7 +20,7 @@ import {CardModule} from "primeng/card";
   ],
   standalone: true
 })
-export class AppLayoutComponent implements OnDestroy {
+export class AppLayoutComponent implements OnInit, OnDestroy {
 
   overlayMenuOpenSubscription: Subscription;
 
@@ -31,7 +32,7 @@ export class AppLayoutComponent implements OnDestroy {
 
   @ViewChild(AppTopBarComponent) appTopbar!: AppTopBarComponent;
 
-  constructor(public layoutService: LayoutService, public renderer: Renderer2, public router: Router, @Inject(DOCUMENT) protected document: Document) {
+  constructor(public layoutService: LayoutService, public renderer: Renderer2, public router: Router, @Inject(DOCUMENT) protected document: Document, protected keycloak: KeycloakService) {
     this.overlayMenuOpenSubscription = this.layoutService.overlayOpen$.subscribe(() => {
       if (!this.menuOutsideClickListener) {
         this.menuOutsideClickListener = this.renderer.listen('document', 'click', event => {
@@ -126,6 +127,10 @@ export class AppLayoutComponent implements OnDestroy {
     if (this.menuOutsideClickListener) {
       this.menuOutsideClickListener();
     }
+  }
+
+  ngOnInit(): void {
+
   }
 }
 

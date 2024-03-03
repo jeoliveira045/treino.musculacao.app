@@ -29,7 +29,6 @@ export class CPFValidatorClass {
     digitTwo = (digitTwo % 11)
     digits.push(digitOne)
     digits.push(digitTwo)
-    console.log(digits)
     return (cpf[cpf.length - 2] != digits[0] || cpf[cpf.length -1] != digits[1])
   }
 }

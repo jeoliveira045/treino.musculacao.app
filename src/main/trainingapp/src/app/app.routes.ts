@@ -4,8 +4,8 @@ import {ClienteListComponent} from "./pages/cliente/cliente-list/cliente-list.co
 import {ClienteFormComponent} from "./pages/cliente/cliente-form/cliente-form.component";
 import {ExercicioListComponent} from "./pages/exercicio/exercicio-list/exercicio-list.component";
 import {ExercicioFormComponent} from "./pages/exercicio/exercicio-form/exercicio-form.component";
-import {TreinoListComponent} from "./pages/treino/treino-list/treino-list.component";
-import {TreinoFormComponent} from "./pages/treino/treino-form/treino-form.component";
+// import {TreinoListComponent} from "./pages/treino/treino-list/treino-list.component";
+// import {TreinoFormComponent} from "./pages/treino/treino-form/treino-form.component";
 
 export const routes: Routes = [
   {
@@ -53,28 +53,6 @@ export const routes: Routes = [
         ]
       }
     ]
-  },
-  {path: 'treino',
-  children: [
-    {
-      path: 'list',
-      component: TreinoListComponent
-    },
-    {
-      path: 'form',
-      component: TreinoFormComponent,
-      children:[
-        {
-          path:"detail/:id",
-          component: TreinoFormComponent
-        },
-        {
-          path:"new",
-          component:TreinoFormComponent
-        }
-      ]
-    },
-  ]
   },
   {
     path:'', component: AppComponent

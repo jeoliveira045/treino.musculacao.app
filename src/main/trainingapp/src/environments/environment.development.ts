@@ -1,4 +1,10 @@
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:4200/api/'
+  apiUrl: '/api',
+  keycloak: {
+    url: 'http://localhost:8085',
+    realm: 'treino-app',
+    clientId: 'treino-frontend',
+    resourceId: 'treino-backend'
+  }
 };

@@ -6,3 +6,19 @@ services:
     volumes:
       - ./src/main/resources/docker/oracle/:/docker-entrypoint-initdb.d/startup
 
+  keycloak-training:
+    image: quay.io/keycloak/keycloak:23.0.5
+    ports:
+      - 8085:8085
+    command: [ "start-dev",
+               "--http-host","0.0.0.0",
+               "--http-port","8085",
+               "-Dkeycloak.migration.action=import",
+               "-Dkeycloak.migration.provider=singleFile",
+               "-Dkeycloak.migration.file=/tmp/keycloak-config/realm-export.json" ]
+    environment:
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+    volumes:
+      - ./src/main/resources/docker/keycloak/:/tmp/keycloak-config/
+

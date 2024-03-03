@@ -8,6 +8,7 @@ import {ExercicioService} from "../../../services/exercicio.service";
 import {ActivatedRoute, RouterLink} from "@angular/router";
 import {InputTextModule} from "primeng/inputtext";
 import {NgIf} from "@angular/common";
+import {InputGroupModule} from "primeng/inputgroup";
 
 @Component({
   selector: 'app-exercicio-form',
@@ -21,6 +22,7 @@ import {NgIf} from "@angular/common";
     RouterLink,
     InputTextModule,
     NgIf,
+    InputGroupModule,
   ],
   templateUrl: './exercicio-form.component.html',
   styleUrl: './exercicio-form.component.scss'
@@ -32,6 +34,8 @@ export class ExercicioFormComponent {
 
   musculoSelectBoxListItem = ["Biceps","Triceps","Costas", "Peito", "Deltóide", "Trapézio", "Pernas","Cardio"]
 
+  tiposDeTreinoDropDown = ['A', 'B', 'C', 'D', 'E']
+
   formBuilder: FormBuilder = new FormBuilder()
 
   formStructure = this.formBuilder.group({
@@ -40,6 +44,18 @@ export class ExercicioFormComponent {
       Validators.minLength(7)
     ]),
     musculo: new FormControl('', [
+      Validators.required
+    ]),
+    repeticaoA: new FormControl('', [
+      Validators.required
+    ]),
+    repeticaoB: new FormControl('', [
+      Validators.required
+    ]),
+    repeticaoC: new FormControl('', [
+      Validators.required
+    ]),
+    tipoDeTreino: new FormControl('', [
       Validators.required
     ])
   })

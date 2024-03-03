@@ -3,14 +3,14 @@
   <ng-template pTemplate="header">
     <tr>
       <th>Nome</th>
-      <th>Cpf </th>
+      <th>Altura</th>
       <th> </th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-cliente>
-    <tr #element>
+    <tr>
       <td>{{cliente.nome}}</td>
-      <td>{{cliente.cpf}}</td>
+      <td>{{cliente.altura}}</td>
       <td><p-button routerLink="/cliente/form/detail/{{cliente.id}}" icon="pi pi-pencil" label="Editar"></p-button><p-button icon="pi pi-times" styleClass="p-button-danger" label="Deletar" (click)="deleteCliente(cliente.id)"></p-button></td>
     </tr>
   </ng-template>

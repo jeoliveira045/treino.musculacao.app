@@ -16,5 +16,15 @@ public class Exercicio {
 
     private String descricao;
 
+    private String repeticaoA;
+
+    private String repeticaoB;
+
+    private String repeticaoC;
+
+    private String tipoDeTreino;
+
+
+
 
 }
