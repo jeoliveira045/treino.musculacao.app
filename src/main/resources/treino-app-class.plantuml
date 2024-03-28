@@ -1,0 +1,32 @@
+@startuml
+
+package treino-app{
+    class Cliente{
+        - id: Long
+        - nome: String
+        - dtNascimento: Date
+        - idade: String
+        - altura: Long
+        - peso: Long
+        - imc: Long
+    }
+
+    class Exercicio{
+        - id: Long
+        - descricaoExercicio: String
+        - membrosTrabalhados: String
+    }
+
+    class ExercicioQuantidade{
+        - id: Long
+        - series: Long
+        - quantidade: Long
+    }
+}
+
+Cliente --> Exercicio
+Cliente --> ExercicioQuantidade
+
+
+
+@enduml

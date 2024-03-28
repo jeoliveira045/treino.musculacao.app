@@ -1,0 +1,25 @@
+@startuml
+
+skinparam actorStyle awesome
+
+actor Instrutor as i
+
+package treino-app{
+    usecase "cadastrar cliente" as UC1
+    usecase "cadastrar exercicio" as UC2
+    usecase UC3 as "
+        Visualizar os
+        dados do aluno
+        para monitoramento
+         da perda de peso
+    "
+}
+
+i --> UC1
+i --> UC2
+UC1 <-- UC2: <<extends>>
+i --> UC3
+UC3 --> UC1:  <<include>>
+
+
+@enduml

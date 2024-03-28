@@ -32,4 +32,10 @@ public class Cliente {
             joinColumns = @JoinColumn(name = "cliente_id"),
             inverseJoinColumns = @JoinColumn(name = "exercicio_id"))
     private Set<Exercicio> exercicios;
+
+    @ManyToMany
+    @JoinTable(name = "CLIENTEEXERCICIO_QUANTIDADE",
+            joinColumns = @JoinColumn(name = "cliente_id"),
+            inverseJoinColumns = @JoinColumn(name = "exercicioquantidade_id"))
+    private List<ExercicioQuantidade> exercicioQuantidades;
 }
