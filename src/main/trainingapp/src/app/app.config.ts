@@ -45,14 +45,15 @@ const KeycloakInitializerProvider: Provider = {
   deps: [KeycloakService]
 }
 
-// const ClienteServiceProvider: Provider ={
-//   provide: ClienteService
-// }
+const ClienteServiceProvider: Provider ={
+  provide: ClienteService
+}
 
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideHttpClient(withInterceptorsFromDi()),
+    ClienteServiceProvider,
     KeycloakInitializerProvider,
     KeycloakBearerInterceptorProvider,
     KeycloakService,
