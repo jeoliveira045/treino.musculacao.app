@@ -17,15 +17,21 @@ package treino-app{
         - membrosTrabalhados: String
     }
 
-    class ExercicioQuantidade{
-        - id: Long
-        - series: Long
-        - quantidade: Long
+'    class ExercicioQuantidade{
+'        - id: Long
+'        - series: Long
+'        - quantidade: Long
+'    }
+
+    class Treino{
+        -id: Long
     }
+
 }
 
-Cliente --> Exercicio
-Cliente --> ExercicioQuantidade
+Cliente --> Treino
+Treino --> Exercicio
+
 
 
 

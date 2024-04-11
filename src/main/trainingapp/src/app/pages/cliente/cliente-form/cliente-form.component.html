@@ -1,5 +1,7 @@
 <h1>Adicionar Cliente</h1>
+<hr>
 <form [formGroup]="formStructure" (ngSubmit)="ngSubmit(formStructure)">
+  <h2>Informações Pessoais</h2>
   <p-inputGroup>
     <input pInputText class="formInput" id="nome" name="nome" placeholder="Nome" formControlName="nome"><br>
 
@@ -13,9 +15,26 @@
   <div class="formInput">
     <input pInputText class="pesoDesejadoInput" id="pesoDesejado" placeholder="Peso Desejado" name="pesoDesejado" formControlName="pesoDesejado">
 
-    <p-multiSelect class="exerciciosList" [style]="{width: '100%'}" optionLabel="descricao" placeholder="Exercicios" id="exercicios" [options]="exerciciosList" formControlName="exercicios"></p-multiSelect>
   </div>
+  <hr>
   <p-button  type="submit">Salvar</p-button>
   <p-button  routerLink="/cliente/list">Voltar a lista</p-button>
   <p-messages [(value)]="messages" [enableService]="false" [closable]="true"></p-messages>
 </form>
+
+<h2>Treinos</h2>
+<p-button routerLink="/treino/form/new" label="Adicionar Treino"></p-button>
+<p-table [value]="treinoList" [tableStyle]="{'min-width': '50rem'}">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Nome do treino</th>
+      <th> </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-treino>
+    <tr>
+      <td>{{treino.nomeDoTreino}}</td>
+      <td><p-button routerLink="/treino/form/detail/{{treino.id}}" label="Editar"></p-button></td>
+    </tr>
+  </ng-template>
+</p-table>

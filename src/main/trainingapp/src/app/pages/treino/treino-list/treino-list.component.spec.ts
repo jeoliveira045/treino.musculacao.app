@@ -8,10 +8,10 @@ describe('TreinoListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TreinoListComponent]
+      imports: [ TreinoListComponent ]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(TreinoListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

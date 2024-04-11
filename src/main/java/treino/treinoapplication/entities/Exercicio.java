@@ -3,6 +3,8 @@ package treino.treinoapplication.entities;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.Set;
+
 @Data
 @Entity
 @Table(name = "EXERCICIO")
@@ -16,15 +18,7 @@ public class Exercicio {
 
     private String descricao;
 
-    private String repeticaoA;
-
-    private String repeticaoB;
-
-    private String repeticaoC;
-
     private String tipoDeTreino;
-
-
 
 
 }

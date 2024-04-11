@@ -6,7 +6,6 @@ import {LayoutService} from "../../../services/layout.service";
 import {DOCUMENT, NgClass} from "@angular/common";
 import {AppTopBarComponent} from "../app-topbar/app.topbar.component";
 import {CardModule} from "primeng/card";
-import {KeycloakService} from "keycloak-angular";
 
 @Component({
   selector: 'app-layout',
@@ -32,7 +31,7 @@ export class AppLayoutComponent implements OnInit, OnDestroy {
 
   @ViewChild(AppTopBarComponent) appTopbar!: AppTopBarComponent;
 
-  constructor(public layoutService: LayoutService, public renderer: Renderer2, public router: Router, @Inject(DOCUMENT) protected document: Document, protected keycloak: KeycloakService) {
+  constructor(public layoutService: LayoutService, public renderer: Renderer2, public router: Router, @Inject(DOCUMENT) protected document: Document) {
     this.overlayMenuOpenSubscription = this.layoutService.overlayOpen$.subscribe(() => {
       if (!this.menuOutsideClickListener) {
         this.menuOutsideClickListener = this.renderer.listen('document', 'click', event => {

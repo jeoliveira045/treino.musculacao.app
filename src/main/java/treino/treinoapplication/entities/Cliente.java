@@ -27,15 +27,7 @@ public class Cliente {
 
     private Double altura;
 
-    @ManyToMany
-    @JoinTable(name = "CLIENTE_EXERCICIO",
-            joinColumns = @JoinColumn(name = "cliente_id"),
-            inverseJoinColumns = @JoinColumn(name = "exercicio_id"))
-    private Set<Exercicio> exercicios;
+    @OneToMany
+    private List<Treino> treino;
 
-    @ManyToMany
-    @JoinTable(name = "CLIENTEEXERCICIO_QUANTIDADE",
-            joinColumns = @JoinColumn(name = "cliente_id"),
-            inverseJoinColumns = @JoinColumn(name = "exercicioquantidade_id"))
-    private List<ExercicioQuantidade> exercicioQuantidades;
 }

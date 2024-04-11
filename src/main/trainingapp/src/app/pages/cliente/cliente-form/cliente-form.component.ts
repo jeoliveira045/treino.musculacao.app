@@ -21,26 +21,29 @@ import {MultiSelectModule} from "primeng/multiselect";
 import {Exercicio} from "../../../domain/Exercicio";
 import {Cliente} from "../../../domain/Cliente";
 import {InputGroupModule} from "primeng/inputgroup";
+import {TableModule} from "primeng/table";
+import {TreinoService} from "../../../services/treino.service";
 
 
 
 @Component({
   selector: 'app-cliente-form',
   standalone: true,
-  imports: [
-    ButtonModule,
-    MessagesModule,
-    ReactiveFormsModule,
-    InputTextModule,
-    RouterLink,
-    NgIf,
-    InputNumberModule,
-    InputMaskModule,
-    CPFValidatorDirective,
-    NgStyle,
-    MultiSelectModule,
-    InputGroupModule
-  ],
+    imports: [
+        ButtonModule,
+        MessagesModule,
+        ReactiveFormsModule,
+        InputTextModule,
+        RouterLink,
+        NgIf,
+        InputNumberModule,
+        InputMaskModule,
+        CPFValidatorDirective,
+        NgStyle,
+        MultiSelectModule,
+        InputGroupModule,
+        TableModule
+    ],
   providers:[
     CPFValidatorClass
   ],
@@ -48,9 +51,11 @@ import {InputGroupModule} from "primeng/inputgroup";
   styleUrl: './cliente-form.component.scss'
 })
 export class ClienteFormComponent implements OnInit{
-  constructor(protected clienteService: ClienteService, protected activatedRoute: ActivatedRoute, protected exercicioService: ExercicioService){
+  constructor(protected clienteService: ClienteService, protected activatedRoute: ActivatedRoute, protected exercicioService: ExercicioService, protected treinoService: TreinoService){
 
   }
+
+  treinoList: Array<any> = new Array<any>()
 
   exerciciosList = new Array<any>();
 
@@ -83,6 +88,9 @@ export class ClienteFormComponent implements OnInit{
   }
 
   ngOnInit() {
+    this.treinoService.findAll().subscribe(res => {
+      this.treinoList = res
+    })
     let id = this.activatedRoute.firstChild?.snapshot.params['id']
     if(id) {
       this.clienteService.findById(id).subscribe((cliente: any) => {
@@ -92,11 +100,9 @@ export class ClienteFormComponent implements OnInit{
           this.formStructure.controls['idade'].setValue(cliente.idade)
           this.formStructure.controls['pesoAtual'].setValue(cliente.pesoAtual)
           this.formStructure.controls['pesoDesejado'].setValue(cliente.pesoDesejado)
-          this.formStructure.controls['exercicios'].setValue(cliente.exercicios)
         }
       )
     }
-    this.exercicioService.findAll().subscribe((res: Array<any>) => res.forEach(value => this.exerciciosList.push(value)))
   }
 
   insertOrUpdateMessage = {

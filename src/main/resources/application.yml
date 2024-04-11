@@ -11,9 +11,9 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
-  security:
-    oauth2:
-      resource-server:
-        jwt:
-          jwk-set-uri: http://localhost:8085/realms/treino-app/protocol/openid-connect/certs
-          issuer-uri: http://localhost:8085/realms/treino-app
+#  security:
+#    oauth2:
+#      resource-server:
+#        jwt:
+#          jwk-set-uri: http://localhost:8085/realms/treino-app/protocol/openid-connect/certs
+#          issuer-uri: http://localhost:8085/realms/treino-app

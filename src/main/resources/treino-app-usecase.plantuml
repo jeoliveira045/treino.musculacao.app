@@ -10,8 +10,6 @@ package treino-app{
     usecase UC3 as "
         Visualizar os
         dados do aluno
-        para monitoramento
-         da perda de peso
     "
 }
 
