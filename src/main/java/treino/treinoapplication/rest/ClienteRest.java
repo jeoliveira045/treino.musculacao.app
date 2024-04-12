@@ -37,6 +37,7 @@ public class ClienteRest {
 
     @PutMapping("/{id}")
     public ResponseEntity<Cliente> update(@PathVariable Long id,@RequestBody Cliente resource){
+        resource.setId(id);
         return ResponseEntity.ok(repository.save(resource));
     }
 

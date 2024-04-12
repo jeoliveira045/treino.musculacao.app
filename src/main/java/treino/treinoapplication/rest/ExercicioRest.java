@@ -41,11 +41,8 @@ public class ExercicioRest {
 
     @PutMapping("/{id}")
     public ResponseEntity<Exercicio> update(@PathVariable Long id,@RequestBody Exercicio resource){
-        Exercicio exercicio = repository.findById(id).orElseThrow(() -> new EntityNotFoundException("Id não encontrado"));
-        exercicio.setId(id);
-        exercicio.setDescricao(resource.getDescricao());
-        exercicio.setMusculo(resource.getMusculo());
-        return ResponseEntity.ok(repository.save(exercicio));
+        resource.setId(id);
+        return ResponseEntity.ok(repository.save(resource));
     }
 
     @DeleteMapping("/{id}")

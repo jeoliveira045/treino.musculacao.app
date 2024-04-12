@@ -20,5 +20,8 @@ public class Exercicio {
 
     private String tipoDeTreino;
 
+    @ManyToMany
+    private Set<ExercicioQuantidade> exercicioQuantidade;
+
 
 }

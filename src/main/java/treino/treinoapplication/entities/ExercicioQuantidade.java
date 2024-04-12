@@ -17,4 +17,7 @@ public class ExercicioQuantidade{
 
     private String series;
 
+    @Column(name = "quantidadesPorSerie", columnDefinition = "as (SERIES || '/' || QUANTIDADE)+")
+    private String quantidadesPorSerie;
+
 }

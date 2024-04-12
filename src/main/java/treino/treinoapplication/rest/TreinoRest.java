@@ -10,7 +10,7 @@ import treino.treinoapplication.repositories.TreinoRepository;
 import java.util.List;
 
 @RestController
-@RequestMapping("/treino")
+@RequestMapping("/api/treino")
 @AllArgsConstructor
 public class TreinoRest {
     
@@ -34,11 +34,8 @@ public class TreinoRest {
 
     @PutMapping("/{id}")
     public ResponseEntity<Treino> update(@PathVariable Long id,@RequestBody Treino resource){
-        Treino treino = repository.findById(id).orElseThrow(() -> new EntityNotFoundException("Id não encontrado"));
-        treino.setId(id);
-        treino.setExercicio(resource.getExercicio());
-        treino.setNomeDoTreino(resource.getNomeDoTreino());
-        return ResponseEntity.ok(repository.save(treino));
+        resource.setId(id);
+        return ResponseEntity.ok(repository.save(resource));
     }
 
     @DeleteMapping("/{id}")
